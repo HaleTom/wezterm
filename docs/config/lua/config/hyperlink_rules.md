@@ -114,7 +114,7 @@ table.insert(config.hyperlink_rules, {
 -- as long as a full url hyperlink regex exists above this it should not match a full url to
 -- github or gitlab / bitbucket (i.e. https://gitlab.com/user/project.git is still a whole clickable url)
 table.insert(config.hyperlink_rules, {
-  regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
-  format = 'https://www.github.com/$1/$3',
+  regex = [[(^|(?<=[\[(\s'"]))([0-9A-Za-z][-0-9A-Za-z]{0,38})/([A-Za-z0-9_.-]{1,100})((?=[])\s'".!?])|$)]],
+  format = 'https://www.github.com/$2/$3/',
 })
 ```
